@@ -1,2 +1,31 @@
 ###
 GET http://localhost:3000
+
+###
+GET http://localhost:3000/users
+
+###
+GET http://localhost:3000/api/users/6
+
+###
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+    "name":"Bain",
+    "age":24,
+    "membershipstatus": "expired"
+}
+
+###
+DELETE http://localhost:3000/api/users/8
+
+###
+PATCH  http://localhost:3000/api/users/6
+Content-Type: application/json
+
+{
+    "name":"Scott",
+    "age":44,
+    "membershipstatus": "expired"
+}
