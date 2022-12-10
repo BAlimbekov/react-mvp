@@ -1,0 +1,21 @@
+.card {
+    width: 500px;
+    background-color: rgb(173, 173, 6);
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10%;
+    border: 1px solid rgb(247, 245, 246);
+    
+}
+
+.card:hover {
+    background-color: rgb(101, 89, 81);
+    transform: scale(1.4);
+    transition: 0.8s ease;   
+    border: 5px rgb(247, 245, 246);
+}
+
+/* #editUser:hover {
+    transform: scale(15);
+    transition: 4s ease;
+} */
