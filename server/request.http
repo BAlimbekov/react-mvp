@@ -12,13 +12,13 @@ POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-    "name":"Bain",
+    "name":"Bekmambet",
     "age":24,
     "membershipstatus": "expired"
 }
 
 ###
-DELETE http://localhost:3000/api/users/8
+DELETE http://localhost:3000/api/users/295
 
 ###
 PATCH  http://localhost:3000/api/users/6

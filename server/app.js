@@ -14,6 +14,7 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
+
 app.get('/users', (req, res) => {
   client.query('SELECT * FROM users')
     .then((result) => {
@@ -37,18 +38,20 @@ app.post('/api/users', (req, res)=>{
   const age = person.age;
   const membershipstatus = person.membershipstatus;
   const id = req.params.id;
-  const queryString = "INSERT INTO users(name, age, membershipstatus)VALUES($1, $2, $3)"
+  const queryString = "INSERT INTO users(name, age, membershipstatus)VALUES($1, $2, $3) RETURNING *"
   client.query(queryString, [name, age, membershipstatus]) 
   .then((result) => {
     res.status(200).send(result.rows[0])
+    
   })
   .catch((err)=>console.error(err.stack))
 })
 
 app.delete('/api/users/:id', (req, res) => {
   const id = req.params.id;
-  client.query(`DELETE FROM users WHERE id=${id}`)
+  client.query(`DELETE FROM users WHERE id=${id} RETURNING *`)
     .then((result) => {
+      console.log("looking for", result)
       res.status(200).send(result.rows[0])
     })
     .catch((err) => console.error(err.stack))
@@ -62,7 +65,7 @@ app.patch('/api/users/:id', (req, res)=>{
   const id = req.params.id;
   client.query(`UPDATE users SET name='${name}', age=${age}, membershipstatus='${membershipstatus}' WHERE id=${id}`)
   .then((result)=> {
-    res.status(200).send(result.rows)
+    res.status(200).send(result.rows[0])
   })
   .catch((err)=> console.error(err.stack))
 })
