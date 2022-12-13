@@ -5,7 +5,7 @@ GET http://localhost:3000
 GET http://localhost:3000/users
 
 ###
-GET http://localhost:3000/api/users/6
+GET http://localhost:3000/api/users/68
 
 ###
 POST http://localhost:3000/api/users
@@ -18,10 +18,10 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/api/users/295
+DELETE http://localhost:3000/api/users/78
 
 ###
-PATCH  http://localhost:3000/api/users/6
+PATCH  http://localhost:3000/api/users/77
 Content-Type: application/json
 
 {

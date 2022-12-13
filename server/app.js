@@ -1,12 +1,16 @@
 const express = require('express')
 const app = express()
-const port = 3000;
+// const port = 3000;
 const cors = require('cors');
 app.use(cors());
+
+const config = require("./config.js")[process.env.NODE_ENV || "dev"];
+const PORT = config.port;
+
 const { Client } = require('pg');
 const connectionString = 'postgresql://postgres:docker@127.0.0.1:5432/user_db';
 const client = new Client({
-  connectionString: connectionString
+  connectionString: config.connectionString
 });
 client.connect();
 app.use(express.json());
@@ -63,7 +67,7 @@ app.patch('/api/users/:id', (req, res)=>{
   const age = person.age;
   const membershipstatus = person.membershipstatus;
   const id = req.params.id;
-  client.query(`UPDATE users SET name='${name}', age=${age}, membershipstatus='${membershipstatus}' WHERE id=${id}`)
+  client.query(`UPDATE users SET name='${name}', age=${age}, membershipstatus='${membershipstatus}' WHERE id=${id} RETURNING *`)
   .then((result)=> {
     res.status(200).send(result.rows[0])
   })
@@ -71,6 +75,6 @@ app.patch('/api/users/:id', (req, res)=>{
 })
 
 
-app.listen(port, () => {
-  console.log(`listening on port ${port}`)
+app.listen(PORT, () => {
+  console.log(`listening on port ${PORT}`)
 })
