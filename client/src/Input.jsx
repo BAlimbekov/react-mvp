@@ -30,7 +30,7 @@ const InputUser = (props) => {
             membershipstatus: props.membershipstatus
         };
 
-        await fetch("http://localhost:3000/api/users", { method: 'POST', headers: { "Content-type": "application/json" }, body: JSON.stringify(card)})
+        await fetch("https://react-api-server-jqzf.onrender.com/api/users", { method: 'POST', headers: { "Content-type": "application/json" }, body: JSON.stringify(card)})
             .then(response => response.json())
             .then((result) => props.setUsersData(data =>[result, ...data]))        
     };

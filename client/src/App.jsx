@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     const getUsers = async () => {
 
-      await fetch("http://localhost:3000/users")
+      await fetch("https://react-api-server-jqzf.onrender.com/users")
         .then(response => response.json())
         .then(result => {
           setUsersData(result)

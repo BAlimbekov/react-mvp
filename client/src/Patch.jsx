@@ -30,7 +30,7 @@ const Patch = (props) => {
             membershipstatus: props.membershipstatus
         };
         e.preventDefault();
-        await fetch(`http://localhost:3000/api/users/${props.cardId}`, { method: 'PATCH', headers: { "Content-type": "application/json" }, body: JSON.stringify(card) })
+        await fetch(`https://react-api-server-jqzf.onrender.com/api/users/${props.cardId}`, { method: 'PATCH', headers: { "Content-type": "application/json" }, body: JSON.stringify(card) })
             .then(response => response.json())
             .then((result) => props.setUsersData(data =>[result, ...data]))
     }

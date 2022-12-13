@@ -4,7 +4,7 @@ import './card.css'
 
 const Card = (props) => {
     const handleClick1 = () => {
-        fetch("http://localhost:3000/api/users/" + props.card.id, { method: 'DELETE' })
+        fetch("https://react-api-server-jqzf.onrender.com/api/users/" + props.card.id, { method: 'DELETE' })
             .then(response => response.json())
             .then(result => {
                 //const filteredData = props.usersData.filter(data => data.id !== result.id)
